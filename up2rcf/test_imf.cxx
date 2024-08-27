@@ -758,7 +758,7 @@ int main(int argc, char **argv)
 			double cce3 = epsilon3 * epsilon3;
 
 			// extract event below guassian distribution from all data
-			if(gen>=99936) {cout<<"gen is "<<gen<<endl; break;}
+			if(gen>=99176) {cout<<"gen is "<<gen<<endl; break;}
 
 			// extract event below guassian distribution from all data
 			// if     ( (epsilon3>=0.130) && (epsilon3<0.135) )    { ebin1  = ebin1  + 4;   if(ebin1  > 20    ) { continue; } gen = gen + 4;}
@@ -778,38 +778,38 @@ int main(int argc, char **argv)
 			// else if( (epsilon3>=0.200) && (epsilon3<0.205) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 112   ) { continue; } gen = gen + 4;}
 			// else if( (epsilon3>=0.205) && (epsilon3<0.210) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 20    ) { continue; } gen = gen + 4;}
 
-			if     ( (epsilon3>=0.01) && (epsilon3<0.02) )	{ ebin1  = ebin1  + 4;   if(ebin1  > 6    ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.02) && (epsilon3<0.03) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 14   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.03) && (epsilon3<0.04) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 34   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.04) && (epsilon3<0.05) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 77   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.05) && (epsilon3<0.06) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 163  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.06) && (epsilon3<0.07) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 323  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.07) && (epsilon3<0.08) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 601  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.08) && (epsilon3<0.09) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 1053 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.09) && (epsilon3<0.10) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 1731 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.10) && (epsilon3<0.11) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 2675 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.11) && (epsilon3<0.12) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 3884 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.12) && (epsilon3<0.13) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 5301 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.13) && (epsilon3<0.14) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 6797 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.14) && (epsilon3<0.15) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 8191 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.15) && (epsilon3<0.16) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 9276 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.16) && (epsilon3<0.17) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 9871 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.17) && (epsilon3<0.18) )	{ ebin17 = ebin17 + 4;   if(ebin17 > 9871 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.18) && (epsilon3<0.19) )	{ ebin18 = ebin18 + 4;   if(ebin18 > 9276 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.19) && (epsilon3<0.20) )	{ ebin19 = ebin19 + 4;   if(ebin19 > 8191 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.20) && (epsilon3<0.21) )	{ ebin20 = ebin20 + 4;   if(ebin20 > 6797 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.21) && (epsilon3<0.22) )	{ ebin21 = ebin21 + 4;   if(ebin21 > 5301 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.22) && (epsilon3<0.23) )	{ ebin22 = ebin22 + 4;   if(ebin22 > 3884 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.23) && (epsilon3<0.24) )	{ ebin23 = ebin23 + 4;   if(ebin23 > 2675 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.24) && (epsilon3<0.25) )	{ ebin24 = ebin24 + 4;   if(ebin24 > 1731 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.25) && (epsilon3<0.26) )	{ ebin25 = ebin25 + 4;   if(ebin25 > 1053 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.26) && (epsilon3<0.27) )	{ ebin26 = ebin26 + 4;   if(ebin26 > 601  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.27) && (epsilon3<0.28) )	{ ebin27 = ebin27 + 4;   if(ebin27 > 323  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.28) && (epsilon3<0.29) )	{ ebin28 = ebin28 + 4;   if(ebin28 > 163  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.29) && (epsilon3<0.30) )	{ ebin29 = ebin29 + 4;   if(ebin29 > 77   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.30) && (epsilon3<0.31) )	{ ebin30 = ebin30 + 4;   if(ebin30 > 34   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.31) && (epsilon3<0.32) )	{ ebin31 = ebin31 + 4;   if(ebin31 > 14   ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.32) && (epsilon3<0.33) )	{ ebin32 = ebin32 + 4;   if(ebin32 > 6    ) { continue; } gen = gen + 4;}
+			if     ( (epsilon3>=0.01) && (epsilon3<0.02) )	{ ebin1  = ebin1  + 4;   if(ebin1  > 238  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.02) && (epsilon3<0.03) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 361  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.03) && (epsilon3<0.04) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 531  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.04) && (epsilon3<0.05) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 762  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.05) && (epsilon3<0.06) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 1063 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.06) && (epsilon3<0.07) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 1441 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.07) && (epsilon3<0.08) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 1902 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.08) && (epsilon3<0.09) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 2440 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.09) && (epsilon3<0.10) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 3046 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.10) && (epsilon3<0.11) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 3698 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.11) && (epsilon3<0.12) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 4367 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.12) && (epsilon3<0.13) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 5016 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.13) && (epsilon3<0.14) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 5605 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.14) && (epsilon3<0.15) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 6090 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.15) && (epsilon3<0.16) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 6437 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.16) && (epsilon3<0.17) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 6618 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.17) && (epsilon3<0.18) )	{ ebin17 = ebin17 + 4;   if(ebin17 > 6618 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.18) && (epsilon3<0.19) )	{ ebin18 = ebin18 + 4;   if(ebin18 > 6437 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.19) && (epsilon3<0.20) )	{ ebin19 = ebin19 + 4;   if(ebin19 > 6090 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.20) && (epsilon3<0.21) )	{ ebin20 = ebin20 + 4;   if(ebin20 > 5605 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.21) && (epsilon3<0.22) )	{ ebin21 = ebin21 + 4;   if(ebin21 > 5016 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.22) && (epsilon3<0.23) )	{ ebin22 = ebin22 + 4;   if(ebin22 > 4367 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.23) && (epsilon3<0.24) )	{ ebin23 = ebin23 + 4;   if(ebin23 > 3698 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.24) && (epsilon3<0.25) )	{ ebin24 = ebin24 + 4;   if(ebin24 > 3046 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.25) && (epsilon3<0.26) )	{ ebin25 = ebin25 + 4;   if(ebin25 > 2440 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.26) && (epsilon3<0.27) )	{ ebin26 = ebin26 + 4;   if(ebin26 > 1902 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.27) && (epsilon3<0.28) )	{ ebin27 = ebin27 + 4;   if(ebin27 > 1441 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.28) && (epsilon3<0.29) )	{ ebin28 = ebin28 + 4;   if(ebin28 > 1063 ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.29) && (epsilon3<0.30) )	{ ebin29 = ebin29 + 4;   if(ebin29 > 762  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.30) && (epsilon3<0.31) )	{ ebin30 = ebin30 + 4;   if(ebin30 > 531  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.31) && (epsilon3<0.32) )	{ ebin31 = ebin31 + 4;   if(ebin31 > 361  ) { continue; } gen = gen + 4;}
+			else if( (epsilon3>=0.32) && (epsilon3<0.33) )	{ ebin32 = ebin32 + 4;   if(ebin32 > 238  ) { continue; } gen = gen + 4;}
 			// else if( (epsilon3>=0.33) && (epsilon3<0.34) )	{ ebin33 = ebin33 + 4;   if(ebin33 > 2780 ) { continue; } gen = gen + 4;}
 			// else if( (epsilon3>=0.34) && (epsilon3<0.35) )	{ ebin34 = ebin34 + 4;   if(ebin34 > 2541 ) { continue; } gen = gen + 4;}
 			// else if( (epsilon3>=0.35) && (epsilon3<0.36) )	{ ebin35 = ebin35 + 4;   if(ebin35 > 2299 ) { continue; } gen = gen + 4;}
