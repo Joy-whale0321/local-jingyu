@@ -47,7 +47,7 @@ std::string GetFirstLine(std::string listname);
 bool is_directory_empty(const fs::path& dir_path);
 
 void Fun4All_CaloANA(
-    const int nEvents = 10,
+    const int nEvents = 5,
     vector<string> myInputLists = {
         "runList/dst_calo_cluster.list",
         "runList/g4hits.list"}, 
