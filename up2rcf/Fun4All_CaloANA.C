@@ -21,7 +21,7 @@
 #include <caloreco/RawClusterBuilderTemplate.h>
 #include <caloreco/RawTowerCalibration.h>
 
-#include <photonemc/EMCtruth_cluster.h>
+#include <emctruthcluster/EMCtruthcluster.h>
 
 #include <stdio.h>
 #include <iostream>
@@ -116,7 +116,7 @@ void Fun4All_CaloANA(
   se->registerSubsystem(ClusterBuilder);
 
   float new_cemc_rad = 100.70;//(1-(-0.077))*93.5 recommended cemc radius
-  EMCtruth_cluster *photonemc = new EMCtruth_cluster("Single_photon_emc_reco", outputAnaFile);
+  EMCtruthcluster *photonemc = new EMCtruthcluster("Single_photon_emc_reco", outputAnaFile);
   // PhotonEMC *photonemc = new PhotonEMC("Single_photon_emc_reco", outputAnaFile);
   photonemc->EMcalRadiusUser(doEMcalRadiusCorr);
   photonemc->setEMcalRadius(new_cemc_rad);
