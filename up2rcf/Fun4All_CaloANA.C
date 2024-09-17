@@ -21,7 +21,7 @@
 #include <caloreco/RawClusterBuilderTemplate.h>
 #include <caloreco/RawTowerCalibration.h>
 
-#include <emctruthcluster/EMCtruthcluster.h>
+#include <photonemc/EMCtruthcluster.h>
 
 #include <stdio.h>
 #include <iostream>
@@ -51,7 +51,8 @@ void Fun4All_CaloANA(
     vector<string> myInputLists = {
         "runList/dst_calo_cluster.list",
         "runList/g4hits.list"}, 
-    bool doEMcalRadiusCorr = false)
+    bool doEMcalRadiusCorr = false
+    const int seg4condor = 1)
 {
   int verbosity = 0;
 
@@ -65,7 +66,7 @@ void Fun4All_CaloANA(
   //The next set of lines figures out folder revisions, file numbers etc
   string outDir = "/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro";
 
-  string outputAnaFileName = "TrackCalo_" + to_string(segment) + "_ana.root";
+  string outputAnaFileName = "TrackCalo_"+ std::to_string(seg4condor) + "_" + to_string(segment) + "_ana.root";
 
   string outputRecoDir = outDir + "/inReconstruction/" + to_string(runnumber) + "/";
   string makeDirectory = "mkdir -p " + outputRecoDir;
