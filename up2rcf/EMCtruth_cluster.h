@@ -1,13 +1,13 @@
 // Tell emacs that this is a C++ source
 //  -*- C++ -*-.
 /*!
- *  \file               PhotonEMC.h
+ *  \file               EMCtruth_cluster.h
  *  \brief              Record Photon response in EMCal, and Truth info
  *  \author Xudong Yu <xyu3@bnl.gov>
  */
 
-#ifndef PHOTONEMC_H
-#define PHOTONEMC_H
+#ifndef EMCtruth_cluster_H
+#define EMCtruth_cluster_H
 
 #include <fun4all/SubsysReco.h>
 
@@ -33,13 +33,13 @@ class TH2;
 class TFile;
 class TTree;
 
-class PhotonEMC : public SubsysReco
+class EMCtruth_cluster : public SubsysReco
 {
  public:
 
-  PhotonEMC(const std::string &name = "PhotonEMC", const std::string &file = "output.root");
+  EMCtruth_cluster(const std::string &name = "EMCtruth_cluster", const std::string &file = "output.root");
 
-  ~PhotonEMC() override;
+  ~EMCtruth_cluster() override;
 
   /** Called during initialization.
       Typically this is where you can book histograms, and e.g.
@@ -162,4 +162,4 @@ class PhotonEMC : public SubsysReco
    float m_emcal_e_low_cut = 0.2;
 };
 
-#endif // PHOTONEMC_H
+#endif // EMCtruth_cluster_H
