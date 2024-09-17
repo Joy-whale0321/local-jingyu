@@ -1,9 +1,9 @@
 /*!
- *  \file               PhotonEMC.cc
+ *  \file               EMCtruth_cluster.cc
  *  \brief              Record Photon response in EMCal, and Truth info
  *  \author Xudong Yu <xyu3@bnl.gov>
  */
-#include "PhotonEMC.h"
+#include "EMCtruth_cluster.h"
 
 #include <calobase/RawClusterContainer.h>
 #include <calobase/RawTowerGeomContainer.h>
@@ -47,26 +47,26 @@
 #include <TLorentzVector.h>
 
 //____________________________________________________________________________..
-PhotonEMC::PhotonEMC(const std::string &name, const std::string &file):
+EMCtruth_cluster::EMCtruth_cluster(const std::string &name, const std::string &file):
  SubsysReco(name),
  _outfilename(file),
  _outfile(nullptr),
  _tree(nullptr)
 {
-  std::cout << "PhotonEMC::PhotonEMC(const std::string &name) Calling ctor" << std::endl;
+  std::cout << "EMCtruth_cluster::EMCtruth_cluster(const std::string &name) Calling ctor" << std::endl;
 }
 
 //____________________________________________________________________________..
-PhotonEMC::~PhotonEMC()
+EMCtruth_cluster::~EMCtruth_cluster()
 {
-  std::cout << "PhotonEMC::~PhotonEMC() Calling dtor" << std::endl;
+  std::cout << "EMCtruth_cluster::~EMCtruth_cluster() Calling dtor" << std::endl;
 }
 
 //____________________________________________________________________________..
-int PhotonEMC::Init(PHCompositeNode *topNode)
+int EMCtruth_cluster::Init(PHCompositeNode *topNode)
 {
   std::cout << topNode << std::endl;
-  std::cout << "PhotonEMC::Init(PHCompositeNode *topNode) Initializing" << std::endl;
+  std::cout << "EMCtruth_cluster::Init(PHCompositeNode *topNode) Initializing" << std::endl;
 
   delete _outfile;
   _outfile = new TFile(_outfilename.c_str(), "RECREATE");
@@ -78,7 +78,7 @@ int PhotonEMC::Init(PHCompositeNode *topNode)
 }
 
 //____________________________________________________________________________..
-void PhotonEMC::createBranches()
+void EMCtruth_cluster::createBranches()
 {
   delete _tree;
   _tree = new TTree("tree", "A tree with calo reco/truth info");
@@ -129,9 +129,9 @@ void PhotonEMC::createBranches()
 }
 
 //____________________________________________________________________________..
-int PhotonEMC::process_event(PHCompositeNode *topNode)
+int EMCtruth_cluster::process_event(PHCompositeNode *topNode)
 {
-  std::cout<<"PhotonEMC::process_event event "<<cnt<<std::endl;
+  std::cout<<"EMCtruth_cluster::process_event event "<<cnt<<std::endl;
   cnt++;
   PHNodeIterator nodeIter(topNode);
   PHNode* evtNode = dynamic_cast<PHNode*>(nodeIter.findFirst("EventHeader"));
@@ -153,7 +153,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     clustersEM = findNode::getClass<RawClusterContainer>(topNode, m_RawClusCont_EM_name);
     if (!clustersEM)
     {
-      std::cout << "PhotonEMC::process_event: cannot find cluster container " << m_RawClusCont_EM_name << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: cannot find cluster container " << m_RawClusCont_EM_name << std::endl;
     }
   }
 
@@ -162,7 +162,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     EMCAL_Container = findNode::getClass<TowerInfoContainer>(topNode, "TOWERINFO_CALIB_CEMC");
     if(!EMCAL_Container)
     {
-      std::cout << "PhotonEMC::process_event: TOWERINFO_CALIB_CEMC not found!!!" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: TOWERINFO_CALIB_CEMC not found!!!" << std::endl;
     }
   }
 
@@ -171,7 +171,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     EMCalGeo = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_CEMC");
     if(!EMCalGeo)
     {
-      std::cout << "PhotonEMC::process_event: TOWERGEOM_CEMC not found!!!" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: TOWERGEOM_CEMC not found!!!" << std::endl;
     }
   }
 
@@ -180,7 +180,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     IHCalGeo = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_HCALIN");
     if(!IHCalGeo)
     {
-      std::cout << "PhotonEMC::process_event: TOWERGEOM_HCALIN not found!!!" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: TOWERGEOM_HCALIN not found!!!" << std::endl;
     }
   }
 
@@ -189,7 +189,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     OHCalGeo = findNode::getClass<RawTowerGeomContainer>(topNode, "TOWERGEOM_HCALOUT");
     if(!OHCalGeo)
     {
-      std::cout << "PhotonEMC::process_event: TOWERGEOM_HCALOUT not found!!!" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: TOWERGEOM_HCALOUT not found!!!" << std::endl;
     }
   }
 
@@ -198,7 +198,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     vertexmap = findNode::getClass<GlobalVertexMap>(topNode, "GlobalVertexMap");
     if(!vertexmap)
     {
-      std::cout << "PhotonEMC::process_event: GlobalVertexMap not found!!! (but not necessary)" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: GlobalVertexMap not found!!! (but not necessary)" << std::endl;
     }
   }
 
@@ -207,7 +207,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
     truthinfo = findNode::getClass<PHG4TruthInfoContainer>(topNode, "G4TruthInfo");
     if(!truthinfo)
     {
-      std::cout << "PhotonEMC::process_event: G4TruthInfo not found!!!" << std::endl;
+      std::cout << "EMCtruth_cluster::process_event: G4TruthInfo not found!!!" << std::endl;
     }
   }
 
@@ -218,7 +218,7 @@ int PhotonEMC::process_event(PHCompositeNode *topNode)
 }
 
 //____________________________________________________________________________..
-void PhotonEMC::fillTree()
+void EMCtruth_cluster::fillTree()
 {
   if (!clustersEM || !EMCAL_Container || !EMCalGeo || !IHCalGeo || !OHCalGeo || !hits_CEMC || !truthinfo)
   {
@@ -364,7 +364,7 @@ void PhotonEMC::fillTree()
 }
 
 //____________________________________________________________________________..
-int PhotonEMC::End(PHCompositeNode *topNode)
+int EMCtruth_cluster::End(PHCompositeNode *topNode)
 {
   std::cout << topNode << std::endl;
   _outfile->cd();
@@ -373,7 +373,7 @@ int PhotonEMC::End(PHCompositeNode *topNode)
   return Fun4AllReturnCodes::EVENT_OK;
 }
 
-void PhotonEMC::ResetTreeVectors()
+void EMCtruth_cluster::ResetTreeVectors()
 {
   _emcal_id.clear();
   _emcal_phi.clear();
