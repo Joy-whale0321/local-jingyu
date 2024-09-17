@@ -13,7 +13,7 @@ void dphivsenergy() {
 
     // TFile *file = TFile::Open("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/TrackCalo_0_ana_truthcluster.root");
     // TTree *tree = (TTree*)file->Get("tree");
-    TChain chain("tree");
+    TChain *tree_chain("tree");
     
     std::ifstream infile("list.txt");
     std::string filename;
@@ -37,18 +37,18 @@ void dphivsenergy() {
     std::vector<double> *_truth_e             = nullptr;
 
     // 设置分支地址
-    tree->SetBranchAddress("_emcal_phi", &_emcal_phi);
-    tree->SetBranchAddress("_truth_phi", &_truth_phi);
-    tree->SetBranchAddress("_truth_eta", &_truth_eta);
-    tree->SetBranchAddress("_truth_e", &_truth_e);
+    tree_chain->SetBranchAddress("_emcal_phi", &_emcal_phi);
+    tree_chain->SetBranchAddress("_truth_phi", &_truth_phi);
+    tree_chain->SetBranchAddress("_truth_eta", &_truth_eta);
+    tree_chain->SetBranchAddress("_truth_e", &_truth_e);
 
     // 获取条目数量
-    Long64_t nentries = tree->GetEntries();
+    Long64_t nentries = tree_chain->GetEntries();
 
     // 按顺序读取每个条目中的vector
     for (Long64_t i = 0; i < nentries; i++) 
     {
-        tree->GetEntry(i);
+        tree_chain->GetEntry(i);
 
         // map 1 - truth; 2 - g4hit; 3 - cluster reco; 4 - g4particle;
         if (_emcal_phi->size() == 1) 
