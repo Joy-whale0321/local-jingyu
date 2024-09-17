@@ -2,14 +2,31 @@
 #include <TFile.h>
 #include <vector>
 #include <iostream>
+#include <TChain.h>
+#include <fstream>
+#include <string>
 
 void f_guassfit(TH1D *h_fit);
 
 void dphivsenergy() {
-    TFile *newf = new TFile("photon_deltaphi_energy.root","recreate");
+    TFile *newf = new TFile("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/photon_deltaphi_energy.root","recreate");
 
-    TFile *file = TFile::Open("/home/jingyu/sphenix/TrackCalo_0_ana.root");
-    TTree *tree = (TTree*)file->Get("tree");
+    // TFile *file = TFile::Open("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/TrackCalo_0_ana_truthcluster.root");
+    // TTree *tree = (TTree*)file->Get("tree");
+    TChain chain("tree");
+    
+    std::ifstream infile("list.txt");
+    std::string filename;
+
+    while (std::getline(infile, filename)) {
+        if (!filename.empty()) {
+            chain.Add(filename.c_str());
+            std::cout << "Added file: " << filename << std::endl;
+        }
+    }
+    // 检查总共添加了多少事件
+    Long64_t nentries = chain.GetEntries();
+    std::cout << "Total number of entries in the chain: " << nentries << std::endl;
 
     TH2D *h_deltaphi_energy = new TH2D("h_deltaphi_energy", "h_deltaphi_energy", 10000, -0.5, 0.5, 12, -1, 11);
 
