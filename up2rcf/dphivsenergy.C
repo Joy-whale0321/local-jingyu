@@ -9,24 +9,21 @@
 void f_guassfit(TH1D *h_fit);
 
 void dphivsenergy() {
-    TFile *newf = new TFile("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/photon_deltaphi_energy.root","recreate");
+    TFile *newf = new TFile("/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro/photon_deltaphi_energy_1M.root","recreate");
 
-    // TFile *file = TFile::Open("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/TrackCalo_0_ana_truthcluster.root");
-    // TTree *tree = (TTree*)file->Get("tree");
-    TChain *chain("tree");
+    TFile *file = TFile::Open("/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro/Reconstructed/17/truthcluster_1M.root");
+    TTree *tree = (TTree*)file->Get("tree");
+    // TChain *chain = new TChain("tree");
     
-    std::ifstream infile("list.txt");
-    std::string filename;
+    // std::ifstream infile("list.txt");
+    // std::string filename;
 
-    while (std::getline(infile, filename)) {
-        if (!filename.empty()) {
-            chain->Add(filename.c_str());
-            std::cout << "Added file: " << filename << std::endl;
-        }
-    }
-    // 检查总共添加了多少事件
-    Long64_t nentries = chain->GetEntries();
-    std::cout << "Total number of entries in the chain: " << nentries << std::endl;
+    // while (std::getline(infile, filename)) {
+    //     if (!filename.empty()) {
+    //         chain->Add(filename.c_str());
+    //         std::cout << "Added file: " << filename << std::endl;
+    //     }
+    // }
 
     TH2D *h_deltaphi_energy = new TH2D("h_deltaphi_energy", "h_deltaphi_energy", 10000, -0.5, 0.5, 12, -1, 11);
 
@@ -37,18 +34,18 @@ void dphivsenergy() {
     std::vector<double> *_truth_e             = nullptr;
 
     // 设置分支地址
-    chain->SetBranchAddress("_emcal_phi", &_emcal_phi);
-    chain->SetBranchAddress("_truth_phi", &_truth_phi);
-    chain->SetBranchAddress("_truth_eta", &_truth_eta);
-    chain->SetBranchAddress("_truth_e", &_truth_e);
+    tree->SetBranchAddress("_emcal_phi", &_emcal_phi);
+    tree->SetBranchAddress("_truth_phi", &_truth_phi);
+    tree->SetBranchAddress("_truth_eta", &_truth_eta);
+    tree->SetBranchAddress("_truth_e", &_truth_e);
 
     // 获取条目数量
-    Long64_t nentries = chain->GetEntries();
+    Long64_t nentries = tree->GetEntries();
 
     // 按顺序读取每个条目中的vector
     for (Long64_t i = 0; i < nentries; i++) 
     {
-        chain->GetEntry(i);
+        tree->GetEntry(i);
 
         // map 1 - truth; 2 - g4hit; 3 - cluster reco; 4 - g4particle;
         if (_emcal_phi->size() == 1) 
@@ -75,7 +72,7 @@ void dphivsenergy() {
 
     newf->WriteTObject(h_deltaphi_energy, "h_deltaphi_energy");
 
-    file->Close();
+    // file->Close();
 }
 
 void f_guassfit(TH1D *h_fit)
