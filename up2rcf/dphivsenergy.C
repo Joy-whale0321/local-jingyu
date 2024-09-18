@@ -5,8 +5,9 @@
 #include <TChain.h>
 #include <fstream>
 #include <string>
+#include <TGraphErrors.h>
 
-void f_guassfit(TH1D *h_fit);
+void f_guassfit(TH1D *h_fit, double &peak, double &mean, double &sigma);
 
 void dphivsenergy() {
     TFile *newf = new TFile("/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro/photon_deltaphi_energy_1M.root","recreate");
@@ -61,31 +62,49 @@ void dphivsenergy() {
         }
     }
 
+    std::vector<double> *x_energy  = nullptr;
+    std::vector<double> *y_dphi    = nullptr;
+    std::vector<double> *ex_energy = nullptr;
+    std::vector<double> *ey_dphi   = nullptr;
+
     int nYBins = h_deltaphi_energy->GetNbinsY();
-    for (int i = 1; i <= nYBins; ++i) {
+    for (int i = 2; i <= (nYBins-1); ++i) {
+
+        double peak =0;
+        double mean =0;
+        double sigma=0;
+
         TH1D *h_delta_phi_13 = h_deltaphi_energy->ProjectionX(Form("h_delta_phi_bin_%d", i), i, i);
-        f_guassfit(h_delta_phi_13);
+        f_guassfit(h_delta_phi_13, peak, mean, sigma);
 
         TString histName = Form("h_delta_phi_bin_%d", i);
         newf->WriteTObject(h_delta_phi_13, histName);
+    
+        x_energy ->push_back((i-1.5));
+        y_dphi   ->push_back(mean);
+        ex_energy->push_back(0.5);
+        ey_dphi  ->push_back(sigma);
     }
 
+    TGraphErrors *g_deltaphi_energy= new TGraphErrors(x_energy->size(), x_energy->data(), y_dphi->data(), ex_energy->data(), ey_dphi->data());
+
     newf->WriteTObject(h_deltaphi_energy, "h_deltaphi_energy");
+    newf->WriteTObject(g_deltaphi_energy, "g_deltaphi_energy");
 
     // file->Close();
 }
 
-void f_guassfit(TH1D *h_fit)
+void f_guassfit(TH1D *h_fit, double &peak, double &mean, double &sigma)
 {
     gStyle->SetOptStat(1111);
 
-    TF1 *gausFit = new TF1("gausFit", "gaus", -0.05, 0.05);
+    TF1 *gausFit = new TF1("gausFit", "gaus", -0.01, 0.01);
 
     h_fit->Fit(gausFit, "R"); // "R" 表示只在指定的范围内进行拟合
 
-    double peak = gausFit->GetParameter(0);
-    double mean = gausFit->GetParameter(1);
-    double sigma = gausFit->GetParameter(2);
+    peak = gausFit->GetParameter(0);
+    mean = gausFit->GetParameter(1);
+    sigma= gausFit->GetParameter(2);
 
     cout<<"sigma is: "<<sigma<<endl;
 }
