@@ -133,7 +133,7 @@ void Fun4All_CaloANA(
     string outputRecoDirMove = outDir + "/Reconstructed/" + to_string(runnumber) + "/electron/";
     string makeDirectoryMove = "mkdir -p " + outputRecoDirMove;
     system(makeDirectoryMove.c_str());
-    string moveOutput = "mv " + outputAnaFile + " " + outDir + "/Reconstructed/" + to_string(runnumber);
+    string moveOutput = "mv " + outputAnaFile + " " + outputRecoDirMove;
     std::cout << "moveOutput: " << moveOutput << std::endl;
     system(moveOutput.c_str());
   }
