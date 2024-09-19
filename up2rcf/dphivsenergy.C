@@ -10,9 +10,9 @@
 void f_guassfit(TH1D *h_fit, double &peak, double &mean, double &sigma, double fvalue);
 
 void dphivsenergy() {
-    TFile *newf = new TFile("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/photon_dphidz_energy_10K.root","recreate");
+    TFile *newf = new TFile("/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro/photon_dphidz_energy_1M.root","recreate");
 
-    TFile *file = TFile::Open("/home/jingyu/sphenix/fromxvdong/PhotonEMC-main/output/TrackCalo_0_ana.root");
+    TFile *file = TFile::Open("/sphenix/user/jzhang1/testcode4all/PhotonEMC/macro/Reconstructed/17/truthcluster_1M.root");
     TTree *tree = (TTree*)file->Get("tree");
     // TChain *chain = new TChain("tree");
     
