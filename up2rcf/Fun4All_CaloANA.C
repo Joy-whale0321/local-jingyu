@@ -51,7 +51,7 @@ void Fun4All_CaloANA(
     vector<string> myInputLists = {
         "runList/dst_calo_cluster.list",
         "runList/g4hits.list"}, 
-    bool doEMcalRadiusCorr = false
+    bool doEMcalRadiusCorr = false,
     const int seg4condor = 1)
 {
   int verbosity = 0;
@@ -68,7 +68,7 @@ void Fun4All_CaloANA(
 
   string outputAnaFileName = "TrackCalo_"+ std::to_string(seg4condor) + "_" + to_string(segment) + "_ana.root";
 
-  string outputRecoDir = outDir + "/inReconstruction/" + to_string(runnumber) + "/";
+  string outputRecoDir = outDir + "/inReconstruction/" + to_string(runnumber) + "/electron/";
   string makeDirectory = "mkdir -p " + outputRecoDir;
   system(makeDirectory.c_str());
   string outputAnaFile = outputRecoDir + outputAnaFileName;
@@ -130,7 +130,7 @@ void Fun4All_CaloANA(
   ifstream file_ana(outputAnaFile.c_str(), ios::binary | ios::ate);
   if (file_ana.good() && (file_ana.tellg() > 100))
   {
-    string outputRecoDirMove = outDir + "/Reconstructed/" + to_string(runnumber) + "/";
+    string outputRecoDirMove = outDir + "/Reconstructed/" + to_string(runnumber) + "/electron/";
     string makeDirectoryMove = "mkdir -p " + outputRecoDirMove;
     system(makeDirectoryMove.c_str());
     string moveOutput = "mv " + outputAnaFile + " " + outDir + "/Reconstructed/" + to_string(runnumber);
