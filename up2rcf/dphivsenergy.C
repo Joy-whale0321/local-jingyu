@@ -150,16 +150,16 @@ void dphivsenergy() {
 
     // plot sigma verse energy
     TGraph *g_sigmaphi_energy = new TGraph(x_energy->size(), x_energy->data(), ey_dphi->data());
-    g_sigmadphi_energy->SetTitle("Sigma Phi vs Energy;Energy (GeV);#Sigma_{#Phi truth - cluster}");
-    g_sigmadphi_energy->SetMarkerStyle(20);
-    g_sigmadphi_energy->SetMarkerSize(1.0);
-    g_sigmadphi_energy->SetMarkerColor(kBlack); 
+    g_sigmaphi_energy->SetTitle("Sigma Phi vs Energy;Energy (GeV);#Sigma_{#Phi truth - cluster}");
+    g_sigmaphi_energy->SetMarkerStyle(20);
+    g_sigmaphi_energy->SetMarkerSize(1.0);
+    g_sigmaphi_energy->SetMarkerColor(kBlack); 
 
     TGraph *g_sigmaz_energy = new TGraph(x_energy->size(), x_energy->data(), ey_dz->data());
-    g_sigmadz_energy->SetTitle("Sigma Z vs Energy;Energy (GeV);#Sigma_{Z truth - cluster}");
-    g_sigmadz_energy->SetMarkerStyle(20);
-    g_sigmadz_energy->SetMarkerSize(1.0);
-    g_sigmadz_energy->SetMarkerColor(kBlack); 
+    g_sigmaz_energy->SetTitle("Sigma Z vs Energy;Energy (GeV);#Sigma_{Z truth - cluster}");
+    g_sigmaz_energy->SetMarkerStyle(20);
+    g_sigmaz_energy->SetMarkerSize(1.0);
+    g_sigmaz_energy->SetMarkerColor(kBlack); 
 
 
     newf->WriteTObject(g_deltaphi_energy, "g_deltaphi_energy");
