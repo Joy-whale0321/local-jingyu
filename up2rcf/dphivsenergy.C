@@ -29,7 +29,6 @@ void dphivsenergy() {
     TH2D *h_deltaphi_energy = new TH2D("h_deltaphi_energy", "h_deltaphi_energy", 10000, -0.5, 0.5, 12, -1, 11);
     TH2D *h_deltaZ_energy  = new TH2D("h_deltaZ_energy",  "h_deltaZ_energy", 10000, -10, 10, 12, -1, 11);
     TH1D *h_dfactor_energy = new TH1D("h_dfactor_energy", "h_dfactor_energy", 10001, -0.005, 0.005);
-
     TH1D *h_deltaZ_1D = new TH1D("h_deltaZ_1D", "h_deltaZ_1D", 10000, 50, 50);
 
     // 创建指向vector的指针，来接收分支的数据
@@ -149,6 +148,20 @@ void dphivsenergy() {
     g_deltaZ_energy->SetMarkerSize(1.0);
     g_deltaZ_energy->SetMarkerColor(kBlack); 
 
+    // plot sigma verse energy
+    TGraph *g_sigmaphi_energy = new TGraph(x_energy->size(), x_energy->data(), ey_dphi->data());
+    g_sigmadphi_energy->SetTitle("Sigma Phi vs Energy;Energy (GeV);#Sigma_{#Phi truth - cluster}");
+    g_sigmadphi_energy->SetMarkerStyle(20);
+    g_sigmadphi_energy->SetMarkerSize(1.0);
+    g_sigmadphi_energy->SetMarkerColor(kBlack); 
+
+    TGraph *g_sigmaz_energy = new TGraph(x_energy->size(), x_energy->data(), ey_dz->data());
+    g_sigmadz_energy->SetTitle("Sigma Z vs Energy;Energy (GeV);#Sigma_{Z truth - cluster}");
+    g_sigmadz_energy->SetMarkerStyle(20);
+    g_sigmadz_energy->SetMarkerSize(1.0);
+    g_sigmadz_energy->SetMarkerColor(kBlack); 
+
+
     newf->WriteTObject(g_deltaphi_energy, "g_deltaphi_energy");
     newf->WriteTObject(h_deltaphi_energy, "h_deltaphi_energy");
     newf->WriteTObject(g_deltaZ_energy, "g_deltaZ_energy");
@@ -156,6 +169,9 @@ void dphivsenergy() {
     newf->WriteTObject(h_dfactor_energy,"h_dfactor_energy");
 
     newf->WriteTObject(h_deltaZ_1D,"h_deltaZ_1D");
+
+    newf->WriteTObject(g_sigmaphi_energy,"g_sigmaphi_energy");
+    newf->WriteTObject(g_sigmaz_energy,"g_sigmaz_energy");
 
     file->Close();
 }
