@@ -137,6 +137,10 @@ TProfile* v2part_Dm_pt;//PP v-pt
 TProfile* v3part_Dm_pt;
 TProfile* v4part_Dm_pt;
 
+TProfile* v2part_Hm_pt;//PP v-pt
+TProfile* v3part_Hm_pt;
+TProfile* v4part_Hm_pt;
+
 TProfile* v2EP_Dm_pt;//EP v-pt
 TProfile* v3EP_Dm_pt;
 TProfile* v4EP_Dm_pt;
@@ -244,7 +248,7 @@ TProfile* Hv3_2c_ebe;
 
 double VD2,VH2,ptd,pth,VD2_s,VH2_s,VD3,VH3,VD3_s,VH3_s,VD4,VH4,VD4_s,VH4_s,VD2_2c_s,VH2_2c_s,VD3_2c_s,VH3_2c_s;   
 double VH2_2c_b,VH3_2c_b,VD2_2c_b,VD3_2c_b;
-int NassDH, NassHH, Nasscuds, Nassuds;
+int NassDH, NassHH;
 
 double az_VD2,az_VH2,az_ptd,az_pth,az_VD3,az_VH3;
 int az_NassDH, az_NassHH;
@@ -455,6 +459,10 @@ int main(int argc, char **argv)
 	v2part_Dm_pt=new TProfile("v2part_Dm_pt","v2part_Dm_pt",10,0,5.0,-1.0,1.0);
 	v3part_Dm_pt=new TProfile("v3part_Dm_pt","v3part_Dm_pt",10,0,5.0,-1.0,1.0);
 	v4part_Dm_pt=new TProfile("v4part_Dm_pt","v4part_Dm_pt",10,0,5.0,-1.0,1.0);
+
+	v2part_Hm_pt=new TProfile("v2part_Hm_pt","v2part_Hm_pt",10,0,5.0,-1.0,1.0);
+	v3part_Hm_pt=new TProfile("v3part_Hm_pt","v3part_Hm_pt",10,0,5.0,-1.0,1.0);
+	v4part_Hm_pt=new TProfile("v4part_Hm_pt","v4part_Hm_pt",10,0,5.0,-1.0,1.0);
 
 	v2EP_Dm_pt=new TProfile("v2EP_Dm_pt","v2EP_Dm_pt",10,0,5.0,-5.0,5.0);
 	v3EP_Dm_pt=new TProfile("v3EP_Dm_pt","v3EP_Dm_pt",10,0,5.0,-1.0,1.0);
@@ -758,82 +766,82 @@ int main(int argc, char **argv)
 			double cce3 = epsilon3 * epsilon3;
 
 			// extract event below guassian distribution from all data
-			if(gen>=99176) {cout<<"gen is "<<gen<<endl; break;}
+			// if(gen>=99976) {cout<<"gen is "<<gen<<endl; break;}
 
 			// extract event below guassian distribution from all data
-			// if     ( (epsilon3>=0.130) && (epsilon3<0.135) )    { ebin1  = ebin1  + 4;   if(ebin1  > 20    ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.135) && (epsilon3<0.140) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 112   ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.140) && (epsilon3<0.145) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 486   ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.145) && (epsilon3<0.150) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 1654  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.150) && (epsilon3<0.155) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 4406  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.155) && (epsilon3<0.160) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 9185  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.160) && (epsilon3<0.165) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 14988 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.165) && (epsilon3<0.170) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 19146 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.170) && (epsilon3<0.175) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 19146 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.175) && (epsilon3<0.180) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 14988 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.180) && (epsilon3<0.185) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 9185  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.185) && (epsilon3<0.190) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 4406  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.190) && (epsilon3<0.195) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 1654  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.195) && (epsilon3<0.200) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 486   ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.200) && (epsilon3<0.205) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 112   ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.205) && (epsilon3<0.210) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 20    ) { continue; } gen = gen + 4;}
+			// if     ( (epsilon2>=0.210) && (epsilon2<0.215) )    { ebin1  = ebin1  + 4;   if(ebin1  > 20    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.215) && (epsilon2<0.220) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 112   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.220) && (epsilon2<0.225) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 486   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.225) && (epsilon2<0.230) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 1654  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.230) && (epsilon2<0.235) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 4406  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.235) && (epsilon2<0.240) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 9185  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.240) && (epsilon2<0.245) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 14988 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.245) && (epsilon2<0.250) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 19146 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.250) && (epsilon2<0.255) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 19146 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.255) && (epsilon2<0.260) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 14988 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.260) && (epsilon2<0.265) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 9185  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.265) && (epsilon2<0.270) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 4406  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.270) && (epsilon2<0.275) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 1654  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.275) && (epsilon2<0.280) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 486   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.280) && (epsilon2<0.285) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 112   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.285) && (epsilon2<0.290) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 20    ) { continue; } gen = gen + 4;}
 
-			if     ( (epsilon3>=0.01) && (epsilon3<0.02) )	{ ebin1  = ebin1  + 4;   if(ebin1  > 238  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.02) && (epsilon3<0.03) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 361  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.03) && (epsilon3<0.04) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 531  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.04) && (epsilon3<0.05) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 762  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.05) && (epsilon3<0.06) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 1063 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.06) && (epsilon3<0.07) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 1441 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.07) && (epsilon3<0.08) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 1902 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.08) && (epsilon3<0.09) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 2440 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.09) && (epsilon3<0.10) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 3046 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.10) && (epsilon3<0.11) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 3698 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.11) && (epsilon3<0.12) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 4367 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.12) && (epsilon3<0.13) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 5016 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.13) && (epsilon3<0.14) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 5605 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.14) && (epsilon3<0.15) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 6090 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.15) && (epsilon3<0.16) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 6437 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.16) && (epsilon3<0.17) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 6618 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.17) && (epsilon3<0.18) )	{ ebin17 = ebin17 + 4;   if(ebin17 > 6618 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.18) && (epsilon3<0.19) )	{ ebin18 = ebin18 + 4;   if(ebin18 > 6437 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.19) && (epsilon3<0.20) )	{ ebin19 = ebin19 + 4;   if(ebin19 > 6090 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.20) && (epsilon3<0.21) )	{ ebin20 = ebin20 + 4;   if(ebin20 > 5605 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.21) && (epsilon3<0.22) )	{ ebin21 = ebin21 + 4;   if(ebin21 > 5016 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.22) && (epsilon3<0.23) )	{ ebin22 = ebin22 + 4;   if(ebin22 > 4367 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.23) && (epsilon3<0.24) )	{ ebin23 = ebin23 + 4;   if(ebin23 > 3698 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.24) && (epsilon3<0.25) )	{ ebin24 = ebin24 + 4;   if(ebin24 > 3046 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.25) && (epsilon3<0.26) )	{ ebin25 = ebin25 + 4;   if(ebin25 > 2440 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.26) && (epsilon3<0.27) )	{ ebin26 = ebin26 + 4;   if(ebin26 > 1902 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.27) && (epsilon3<0.28) )	{ ebin27 = ebin27 + 4;   if(ebin27 > 1441 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.28) && (epsilon3<0.29) )	{ ebin28 = ebin28 + 4;   if(ebin28 > 1063 ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.29) && (epsilon3<0.30) )	{ ebin29 = ebin29 + 4;   if(ebin29 > 762  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.30) && (epsilon3<0.31) )	{ ebin30 = ebin30 + 4;   if(ebin30 > 531  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.31) && (epsilon3<0.32) )	{ ebin31 = ebin31 + 4;   if(ebin31 > 361  ) { continue; } gen = gen + 4;}
-			else if( (epsilon3>=0.32) && (epsilon3<0.33) )	{ ebin32 = ebin32 + 4;   if(ebin32 > 238  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.33) && (epsilon3<0.34) )	{ ebin33 = ebin33 + 4;   if(ebin33 > 2780 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.34) && (epsilon3<0.35) )	{ ebin34 = ebin34 + 4;   if(ebin34 > 2541 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.35) && (epsilon3<0.36) )	{ ebin35 = ebin35 + 4;   if(ebin35 > 2299 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.36) && (epsilon3<0.37) )	{ ebin36 = ebin36 + 4;   if(ebin36 > 2060 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.37) && (epsilon3<0.38) )	{ ebin37 = ebin37 + 4;   if(ebin37 > 1827 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.38) && (epsilon3<0.39) )	{ ebin38 = ebin38 + 4;   if(ebin38 > 1604 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.39) && (epsilon3<0.40) )	{ ebin39 = ebin39 + 4;   if(ebin39 > 1395 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.40) && (epsilon3<0.41) )	{ ebin40 = ebin40 + 4;   if(ebin40 > 1201 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.41) && (epsilon3<0.42) )	{ ebin41 = ebin41 + 4;   if(ebin41 > 1023 ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.42) && (epsilon3<0.43) )	{ ebin42 = ebin42 + 4;   if(ebin42 > 864  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.43) && (epsilon3<0.44) )	{ ebin43 = ebin43 + 4;   if(ebin43 > 721  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.44) && (epsilon3<0.45) )	{ ebin44 = ebin44 + 4;   if(ebin44 > 597  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.45) && (epsilon3<0.46) )	{ ebin45 = ebin45 + 4;   if(ebin45 > 489  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.46) && (epsilon3<0.47) )	{ ebin46 = ebin46 + 4;   if(ebin46 > 396  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.47) && (epsilon3<0.48) )	{ ebin47 = ebin47 + 4;   if(ebin47 > 318  ) { continue; } gen = gen + 4;}
-			// else if( (epsilon3>=0.48) && (epsilon3<0.49) )	{ ebin48 = ebin48 + 4;   if(ebin48 > 253  ) { continue; } gen = gen + 4;}
-			else   {continue;}  
+			// if     ( (epsilon2>=0.01) && (epsilon2<0.02) )	{ ebin1  = ebin1  + 4;   if(ebin1  > 3    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.02) && (epsilon2<0.03) )	{ ebin2  = ebin2  + 4;   if(ebin2  > 6    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.03) && (epsilon2<0.04) )	{ ebin3  = ebin3  + 4;   if(ebin3  > 11   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.04) && (epsilon2<0.05) )	{ ebin4  = ebin4  + 4;   if(ebin4  > 20   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.05) && (epsilon2<0.06) )	{ ebin5  = ebin5  + 4;   if(ebin5  > 34   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.06) && (epsilon2<0.07) )	{ ebin6  = ebin6  + 4;   if(ebin6  > 58   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.07) && (epsilon2<0.08) )	{ ebin7  = ebin7  + 4;   if(ebin7  > 95   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.08) && (epsilon2<0.09) )	{ ebin8  = ebin8  + 4;   if(ebin8  > 153  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.09) && (epsilon2<0.10) )	{ ebin9  = ebin9  + 4;   if(ebin9  > 6    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.10) && (epsilon2<0.11) )	{ ebin10 = ebin10 + 4;   if(ebin10 > 14   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.11) && (epsilon2<0.12) )	{ ebin11 = ebin11 + 4;   if(ebin11 > 34   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.12) && (epsilon2<0.13) )	{ ebin12 = ebin12 + 4;   if(ebin12 > 77   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.13) && (epsilon2<0.14) )	{ ebin13 = ebin13 + 4;   if(ebin13 > 163  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.14) && (epsilon2<0.15) )	{ ebin14 = ebin14 + 4;   if(ebin14 > 323  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.15) && (epsilon2<0.16) )	{ ebin15 = ebin15 + 4;   if(ebin15 > 601  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.16) && (epsilon2<0.17) )	{ ebin16 = ebin16 + 4;   if(ebin16 > 1053 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.17) && (epsilon2<0.18) )	{ ebin17 = ebin17 + 4;   if(ebin17 > 20   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.18) && (epsilon2<0.19) )	{ ebin18 = ebin18 + 4;   if(ebin18 > 112  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.19) && (epsilon2<0.20) )	{ ebin19 = ebin19 + 4;   if(ebin19 > 486  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.20) && (epsilon2<0.21) )	{ ebin20 = ebin20 + 4;   if(ebin20 > 1654 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.21) && (epsilon2<0.22) )	{ ebin21 = ebin21 + 4;   if(ebin21 > 4406 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.22) && (epsilon2<0.23) )	{ ebin22 = ebin22 + 4;   if(ebin22 > 9185 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.23) && (epsilon2<0.24) )	{ ebin23 = ebin23 + 4;   if(ebin23 > 14988) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.24) && (epsilon2<0.25) )	{ ebin24 = ebin24 + 4;   if(ebin24 > 19146) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.25) && (epsilon2<0.26) )	{ ebin25 = ebin25 + 4;   if(ebin25 > 19146) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.26) && (epsilon2<0.27) )	{ ebin26 = ebin26 + 4;   if(ebin26 > 14988) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.27) && (epsilon2<0.28) )	{ ebin27 = ebin27 + 4;   if(ebin27 > 9185 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.28) && (epsilon2<0.29) )	{ ebin28 = ebin28 + 4;   if(ebin28 > 4406 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.29) && (epsilon2<0.30) )	{ ebin29 = ebin29 + 4;   if(ebin29 > 1654 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.30) && (epsilon2<0.31) )	{ ebin30 = ebin30 + 4;   if(ebin30 > 486  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.31) && (epsilon2<0.32) )	{ ebin31 = ebin31 + 4;   if(ebin31 > 112  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.32) && (epsilon2<0.33) )	{ ebin32 = ebin32 + 4;   if(ebin32 > 20   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.33) && (epsilon2<0.34) )	{ ebin33 = ebin33 + 4;   if(ebin33 > 1053 ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.34) && (epsilon2<0.35) )	{ ebin34 = ebin34 + 4;   if(ebin34 > 601  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.35) && (epsilon2<0.36) )	{ ebin35 = ebin35 + 4;   if(ebin35 > 323  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.36) && (epsilon2<0.37) )	{ ebin36 = ebin36 + 4;   if(ebin36 > 163  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.37) && (epsilon2<0.38) )	{ ebin37 = ebin37 + 4;   if(ebin37 > 77   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.38) && (epsilon2<0.39) )	{ ebin38 = ebin38 + 4;   if(ebin38 > 34   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.39) && (epsilon2<0.40) )	{ ebin39 = ebin39 + 4;   if(ebin39 > 14   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.40) && (epsilon2<0.41) )	{ ebin40 = ebin40 + 4;   if(ebin40 > 6    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.41) && (epsilon2<0.42) )	{ ebin41 = ebin41 + 4;   if(ebin41 > 153  ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.42) && (epsilon2<0.43) )	{ ebin42 = ebin42 + 4;   if(ebin42 > 95   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.43) && (epsilon2<0.44) )	{ ebin43 = ebin43 + 4;   if(ebin43 > 58   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.44) && (epsilon2<0.45) )	{ ebin44 = ebin44 + 4;   if(ebin44 > 34   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.45) && (epsilon2<0.46) )	{ ebin45 = ebin45 + 4;   if(ebin45 > 20   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.46) && (epsilon2<0.47) )	{ ebin46 = ebin46 + 4;   if(ebin46 > 11   ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.47) && (epsilon2<0.48) )	{ ebin47 = ebin47 + 4;   if(ebin47 > 6    ) { continue; } gen = gen + 4;}
+			// else if( (epsilon2>=0.48) && (epsilon2<0.49) )	{ ebin48 = ebin48 + 4;   if(ebin48 > 3    ) { continue; } gen = gen + 4;}
+			// else   {continue;}  
 
 			// az - after zpc
-			for(int az=0; az<nmult2; az++){
-	    		udsc_loop(ampt3, az);
-        	}	
-			make_c_correlation(c_quark,uds_quark,dphi_c_pt);
- 			make_uds_correlation(uds_quark,dphi_uds_pt);
+			// for(int az=0; az<nmult2; az++){
+	    	// 	udsc_loop(ampt3, az);
+        	// }	
+			// make_c_correlation(c_quark,uds_quark,dphi_c_pt);
+ 			// make_uds_correlation(uds_quark,dphi_uds_pt);
 
 			if(epsilon2>0.99)
 			{
@@ -1175,6 +1183,10 @@ bool hadron_loop(AMPT* track,int i,TGraph *tgr)
 		double v2_h=cos(2.0*phimp2);//PP
 		double v3_h=cos(3.0*(phi-psi3));
 		double v4_h=cos(4.0*(phi-psi4));
+
+		v2part_Hm_pt->Fill(pt,v2_h);//填入histogram，得到vn的pt关系
+		v3part_Hm_pt->Fill(pt,v3_h);
+		v4part_Hm_pt->Fill(pt,v4_h);
 
 		VH2_s = VH2_s + v2_h;
 		VH3_s = VH3_s + v3_h;
@@ -1643,6 +1655,10 @@ void writeHistograms(char *outFile)//histogram write to file
  	v3part_Dm_pt->Write();
  	v4part_Dm_pt->Write();
 
+	v2part_Hm_pt->Write();
+ 	v3part_Hm_pt->Write();
+ 	v4part_Hm_pt->Write();
+
 	epsilon2_centrality->Write();
 	epsilon3_centrality->Write();
 	epsilon4_centrality->Write();
@@ -1745,6 +1761,10 @@ void deleteHistograms()
  	delete v2part_Dm_pt;
  	delete v3part_Dm_pt;
  	delete v4part_Dm_pt;
+
+	delete v2part_Hm_pt;
+ 	delete v3part_Hm_pt;
+ 	delete v4part_Hm_pt;
 
 	delete v2EP_Dm_pt;
  	delete v3EP_Dm_pt;
@@ -1851,19 +1871,6 @@ void make_c_correlation(vector<TVector3> c_quark,vector<TVector3> uds_quark,TH2D
 {
   	if((int)(c_quark.size())==0) return;
 
-	// Nasscuds = 0;
-
-	// for(int i=0;i<(int)(c_quark.size());i++)
-  	// {
-	// 	for(int j=0;j<(int)(Hm.size());j++)
-  	// 	{
-    // 		if(fabs(c_quark[i].X()-uds_quark[j].X())>delta_eta_cut && c_quark[i].Z()>pt_low_cut && c_quark[i].Z()<pt_high_cut && uds_quark[j].Z()>pt_low_cut && uds_quark[j].Z()<pt_high_cut)
-	// 		{
-	// 			Nasscuds = Nasscuds + 1;
-	// 		}
-	// 	}
-	// }
-
 	for(int i=0;i<(int)(c_quark.size());i++)
   	{
 		for(int j=0;j<(int)(uds_quark.size());j++)
@@ -1908,19 +1915,6 @@ void make_uds_correlation(vector<TVector3> uds_quark,TH2D* dphi_uds_pt)
 {
    	if((int)(uds_quark.size())==0) return;
 
-	// Nassuds = 0;
-
-	// for(int i=0;i<(int)(c_quark.size());i++)
-  	// {
-	// 	for(int j=0;j<(int)(Hm.size());j++)
-  	// 	{
-    // 		if(fabs(c_quark[i].X()-uds_quark[j].X())>delta_eta_cut && c_quark[i].Z()>pt_low_cut && c_quark[i].Z()<pt_high_cut && uds_quark[j].Z()>pt_low_cut && uds_quark[j].Z()<pt_high_cut)
-	// 		{
-	// 			Nassuds = Nassuds + 1;
-	// 		}
-	// 	}
-	// }
-
 	for(int i=0;i<(int)(uds_quark.size());i++)
   	{
 		for(int j=0;j<(int)(uds_quark.size());j++)
@@ -1931,23 +1925,23 @@ void make_uds_correlation(vector<TVector3> uds_quark,TH2D* dphi_uds_pt)
 				{
 					dphi_uds_pt->Fill(uds_quark[i].Z(),2.0*PI-fabs(uds_quark[i].Y()-uds_quark[j].Y()));
 				
-					az_VH2 = cos(2*(2.0*PI-fabs(uds_quark[i].Y()-uds_quark[j].Y())));
-					az_VH3 = cos(3*(2.0*PI-fabs(uds_quark[i].Y()-uds_quark[j].Y())));
+					// az_VH2 = cos(2*(2.0*PI-fabs(uds_quark[i].Y()-uds_quark[j].Y())));
+					// az_VH3 = cos(3*(2.0*PI-fabs(uds_quark[i].Y()-uds_quark[j].Y())));
 
-					az_pth = uds_quark[i].Z();
-					az_VHH2_pt->Fill(az_pth,az_VH2);
-					az_VHH3_pt->Fill(az_pth,az_VH3);
+					// az_pth = uds_quark[i].Z();
+					// az_VHH2_pt->Fill(az_pth,az_VH2);
+					// az_VHH3_pt->Fill(az_pth,az_VH3);
 				}
 				else
 				{
 					dphi_uds_pt->Fill(uds_quark[i].Z(),fabs(uds_quark[i].Y()-uds_quark[j].Y()));
 				
-					az_VH2 = cos(2*(fabs(uds_quark[i].Y()-uds_quark[j].Y())));
-					az_VH3 = cos(3*(fabs(uds_quark[i].Y()-uds_quark[j].Y())));
+					// az_VH2 = cos(2*(fabs(uds_quark[i].Y()-uds_quark[j].Y())));
+					// az_VH3 = cos(3*(fabs(uds_quark[i].Y()-uds_quark[j].Y())));
 
-					az_pth = uds_quark[i].Z();
-					az_VHH2_pt->Fill(az_pth,az_VH2);
-					az_VHH3_pt->Fill(az_pth,az_VH3);
+					// az_pth = uds_quark[i].Z();
+					// az_VHH2_pt->Fill(az_pth,az_VH2);
+					// az_VHH3_pt->Fill(az_pth,az_VH3);
 				}
 			}
 		}
